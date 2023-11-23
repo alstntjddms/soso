@@ -55,4 +55,9 @@ public class LoginServiceImpl implements LoginService {
 
         return new MemberDTO();
     }
+
+    @Override
+    public boolean findPassword(String email, String loginId) {
+        return false;
+    }
 }

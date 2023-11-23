@@ -21,4 +21,11 @@ public interface LoginService {
      */
     public MemberDTO loginMember(LoginMemberDTO loginMemberDTO, HttpServletResponse res) throws Exception;
 
+    /**
+     * 비밀번호를 잃어버렸을 경우 이메일과 아이디를 받고, 이메일로 임시비밀번호를 전달한다.
+     * @param email
+     * @param loginId
+     * @return
+     */
+    public boolean findPassword(String email, String loginId);
 }
