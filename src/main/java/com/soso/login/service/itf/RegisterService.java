@@ -1,9 +1,6 @@
 package com.soso.login.service.itf;
 
-import com.soso.login.dto.LoginMemberDTO;
 import com.soso.login.dto.RegisterMemberDTO;
-
-import java.util.HashMap;
 
 public interface RegisterService {
 
@@ -28,11 +25,10 @@ public interface RegisterService {
      */
     public boolean checkMailFromCertifiedCode(String email, String certifiedCode);
 
-
     /**
      * 멤버를 등록한다.
      * @param registerMemberDTO
      * @return loginId
      */
-    public String registerMember(RegisterMemberDTO registerMemberDTO);
+    public String registerMember(RegisterMemberDTO registerMemberDTO) throws Exception;
 }
