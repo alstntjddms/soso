@@ -52,11 +52,10 @@ public class JwtUtils {
 
     //
     public static Claims getJwtTokenInfo(String token){
-        Claims claims = Jwts.parser()
+        return Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
-        return claims;
     }
 
     // JWT에서 사용자명 추출
