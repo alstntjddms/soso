@@ -39,8 +39,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public boolean checkMailFromCertifiedCode(String email, String certifiedCode) {
-        certifiedCodeRepository.checkMailFromCertifiedCode(email, certifiedCode);
-        return false;
+        return certifiedCodeRepository.checkMailFromCertifiedCode(email, certifiedCode);
     }
 
     @Override
