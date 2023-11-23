@@ -32,7 +32,7 @@ public interface RegisterService {
     /**
      * 멤버를 등록한다.
      * @param registerMemberDTO
-     * @return String loginId
+     * @return loginId
      */
     public String registerMember(RegisterMemberDTO registerMemberDTO);
 }

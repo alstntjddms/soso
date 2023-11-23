@@ -1,4 +1,4 @@
-package com.soso.login.repository;
+package com.soso.login.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
