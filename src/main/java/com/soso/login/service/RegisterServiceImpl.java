@@ -32,8 +32,6 @@ public class RegisterServiceImpl implements RegisterService {
         // 무작위 코드를 repository에 저장
         certifiedCodeRepository.repository.add(
                 new CertifiedCodeDTO(email, "test", new Timestamp(System.currentTimeMillis())));
-
-        System.out.println("CertifiedCodeRepository.repository = " + certifiedCodeRepository.repository);
         return false;
     }
 
