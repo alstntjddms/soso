@@ -15,6 +15,9 @@ public class RegisterServiceImpl implements RegisterService {
     @Autowired
     RegisterRAO rao;
 
+    @Autowired
+    CertifiedCodeRepository certifiedCodeRepository;
+
     @Override
     public boolean checkIdDuplicated(String loginId) {
         return false;
@@ -22,21 +25,21 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public boolean sendCertifiedToMail(String email) {
-        System.out.println("email = " + email);
         // 무작위 코드를 생성
 
         // 무작위 코드를 이메일로 전송
 
         // 무작위 코드를 repository에 저장
-        CertifiedCodeRepository.repository.add(
+        certifiedCodeRepository.repository.add(
                 new CertifiedCodeDTO(email, "test", new Timestamp(System.currentTimeMillis())));
 
-        System.out.println("CertifiedCodeRepository.repository = " + CertifiedCodeRepository.repository);
+        System.out.println("CertifiedCodeRepository.repository = " + certifiedCodeRepository.repository);
         return false;
     }
 
     @Override
     public boolean checkMailFromCertifiedCode(String email, String certifiedCode) {
+        certifiedCodeRepository.checkMailFromCertifiedCode(email, certifiedCode);
         return false;
     }
 
