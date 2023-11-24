@@ -1,12 +1,18 @@
 package com.soso.login.dto;
 
 import lombok.Data;
-import java.util.ArrayList;
+
+import java.sql.Timestamp;
 
 @Data
 public class MemberDTO {
+    int id;
     String loginId;
-    String name;
+    String password;
+    String tempPassword;
+    String salt;
     String email;
-    ArrayList<String> teams;
+    String name;
+    Timestamp regDate;
+    Timestamp updDate;
 }

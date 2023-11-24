@@ -1,7 +1,6 @@
 package com.soso.login.controller;
 
 import com.soso.login.dto.LoginMemberDTO;
-import com.soso.login.dto.MemberDTO;
 import com.soso.login.service.itf.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

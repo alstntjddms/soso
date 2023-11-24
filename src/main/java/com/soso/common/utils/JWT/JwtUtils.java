@@ -17,10 +17,11 @@ public class JwtUtils {
     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 토큰 만료 시간 (24시간)
 
     // JWT 생성
-    public static String generateJwtToken(String email, String name) {
+    public static String generateJwtToken(String email, String loginId, String name) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("iss", "soso_server");
         claims.put("email", email);
+        claims.put("loginId", loginId);
         claims.put("name", name);
         if(name.equals("전민수") || name.equals("이승욱")){
             claims.put("roles", "admin");

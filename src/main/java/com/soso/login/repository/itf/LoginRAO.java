@@ -1,5 +1,6 @@
 package com.soso.login.repository.itf;
 
+import com.soso.login.dto.RegisterMemberDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +12,5 @@ import java.util.List;
 public interface LoginRAO {
         public List<HashMap> test();
 
+        public RegisterMemberDTO findMemberByLoginId(String loginId);
 }
