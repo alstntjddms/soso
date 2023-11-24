@@ -46,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
 //
 //        // JWT생성
 //        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getName());
+
         String jwt = JwtUtils.generateJwtToken("minsu@naver.com", "전민수");
 
         // response cookie jwt

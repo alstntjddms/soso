@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "로그인 관련 API", description = "Swagger 로그인 테스트용 API")
 @RequestMapping("/login")
 @RestController
+@CrossOrigin(originPatterns="*", allowCredentials = "true")
 public class LoginController {
 
     @Autowired
@@ -28,6 +29,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginMemberDTO loginMemberDTO, HttpServletResponse res) throws Exception {
+        System.out.println("loginMemberDTO = " + loginMemberDTO);
         return new ResponseEntity<>(loginService.loginMember(loginMemberDTO, res), HttpStatus.OK);
     }
 

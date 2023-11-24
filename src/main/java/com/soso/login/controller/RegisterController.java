@@ -17,7 +17,7 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @PostMapping("check-loginIdDuplicated")
+    @PostMapping("check-LoginIdDuplicated")
     public ResponseEntity<?> checkLoginIdDuplicated(@RequestBody String loginId){
         return new ResponseEntity<>(registerService.checkLoginIdDuplicated(loginId), HttpStatus.OK);
     }
