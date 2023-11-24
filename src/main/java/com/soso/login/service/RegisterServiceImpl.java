@@ -123,7 +123,6 @@ public class RegisterServiceImpl implements RegisterService {
         registerMemberDTO.setSalt(sha256.generateSalt());
         registerMemberDTO.setPassword(sha256.hash(registerMemberDTO.getPassword(), registerMemberDTO.getSalt()));
 
-        // db에 저장 아이디, 비밀번호, salt, name, email 등
         rao.registerMember(registerMemberDTO);
 
         return registerMemberDTO.getLoginId();
