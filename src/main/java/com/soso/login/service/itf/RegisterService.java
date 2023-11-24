@@ -9,14 +9,14 @@ public interface RegisterService {
      * @param loginId
      * @return
      */
-    public boolean checkIdDuplicated(String loginId);
+    public boolean checkLoginIdDuplicated(String loginId);
 
     /**
      * 이메일 인증번호를 전송한다.
      * @param email
      * @return
      */
-    public boolean sendCertifiedToMail(String email);
+    public boolean sendCertifiedCodeToMail(String email);
 
     /**
      * 이메일 인증번호를 검증한다.

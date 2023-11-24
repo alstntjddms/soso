@@ -17,9 +17,14 @@ public class RegisterController {
     @Autowired
     RegisterService registerService;
 
-    @PostMapping("/sendCertifiedToMail")
-    public ResponseEntity<?> sendCertifiedToMail(@RequestBody String email){
-        return new ResponseEntity<>(registerService.sendCertifiedToMail(email), HttpStatus.OK);
+    @PostMapping("check-loginIdDuplicated")
+    public ResponseEntity<?> checkLoginIdDuplicated(@RequestBody String loginId){
+        return new ResponseEntity<>(registerService.checkLoginIdDuplicated(loginId), HttpStatus.OK);
+    }
+
+    @PostMapping("/send-CertifiedCodeToMail")
+    public ResponseEntity<?> sendCertifiedCodeToMail(@RequestBody String email){
+        return new ResponseEntity<>(registerService.sendCertifiedCodeToMail(email), HttpStatus.OK);
     }
 
 }

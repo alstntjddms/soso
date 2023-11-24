@@ -28,24 +28,25 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public MemberDTO loginMember(LoginMemberDTO loginMemberDTO, HttpServletResponse response) throws Exception {
-        System.out.println("loginMemberDTO = " + loginMemberDTO);
-        // 아이디, 비밀번호 유효성 검사 ex) 아이디 6자이상 영어, 비밀번호 8자 이상
-
-        // DB에서 아이디에 해당되는 hash된 비밀번호와 salt가져옴
-        String dbPassword = "qwer";
-        String dbSalt = "1234";
-
-        // dbSalt와 사용자입력 password를 hash후 db에 저장된 hash된 password와 같은지 비교
-        if(!sha256.hash(loginMemberDTO.getPassword(), dbSalt).equals(dbPassword)){
-            throw new Exception();
-        }
-
-        // 멤버정보 DB에서 조회
-        MemberDTO memberDTO = new MemberDTO();
-
-        // JWT생성
-        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getName());
+    public MemberDTO loginMember(LoginMemberDTO loginMemberDTO, HttpServletResponse response) {
+//        System.out.println("loginMemberDTO = " + loginMemberDTO);
+//        // 아이디, 비밀번호 유효성 검사 ex) 아이디 6자이상 영어, 비밀번호 8자 이상
+//
+//        // DB에서 아이디에 해당되는 hash된 비밀번호와 salt가져옴
+//        String dbPassword = "qwer";
+//        String dbSalt = "1234";
+//
+//        // dbSalt와 사용자입력 password를 hash후 db에 저장된 hash된 password와 같은지 비교
+//        if(!sha256.hash(loginMemberDTO.getPassword(), dbSalt).equals(dbPassword)){
+//            throw new Exception();
+//        }
+//
+//        // 멤버정보 DB에서 조회
+//        MemberDTO memberDTO = new MemberDTO();
+//
+//        // JWT생성
+//        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getName());
+        String jwt = JwtUtils.generateJwtToken("minsu@naver.com", "전민수");
 
         // response cookie jwt
         Cookie cookie = new Cookie("sosoJwtToken", jwt);
