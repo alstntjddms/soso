@@ -203,7 +203,7 @@ public class RegisterServiceImpl implements RegisterService {
                     "          </tbody></table>\n" +
                     "        </td></tr><!-- end tr -->\n" +
                     "      <tr><td valign=\"middle\" style=\"padding:2em 0 5em 0;\">\n" +
-                    "          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color: #fff;            border-collapse: collapse; border-radius: 4px; border: 1px solid #e1e1e1; border-style: hidden;            overflow: hidden; box-shadow: 0 0 0 1px #e1e1e1; max-width: 460px;\">\n" +
+                    "          <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color: #fff; border-collapse: collapse; border-radius: 4px; border: 1px solid #e1e1e1; border-style: hidden; overflow: hidden; box-shadow: 0 0 0 1px #e1e1e1; max-width: 460px;\">\n" +
                     "            <tbody><tr><td style=\"padding: 6%; text-align: left;\">\n" +
                     "                <div>\n" +
                     "                  <h2 style=\"font-family: 'Pretendard',pretendard,Noto Sans CJK KR,Apple SD Gothic Neo,'나눔고딕','맑은고딕',sans-serif; color: #000; font-size: 24px; margin-bottom: 0; font-weight: 700; line-height: 1.5;letter-spacing: -0.03rem;\">\n" +
