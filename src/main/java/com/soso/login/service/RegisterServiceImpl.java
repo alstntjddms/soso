@@ -9,7 +9,10 @@ import com.soso.login.dto.CertifiedCodeDTO;
 import com.soso.login.repository.CertifiedCodeRepository;
 import com.soso.login.repository.itf.RegisterRAO;
 import com.soso.login.service.itf.RegisterService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.sql.Timestamp;
@@ -27,6 +30,9 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Autowired
     SHA256 sha256;
+
+    @Autowired
+    JavaMailSender javaMailSender;
 
     @Override
     public boolean checkLoginIdDuplicated(HashMap<String, String> reqData) {
@@ -73,6 +79,12 @@ public class RegisterServiceImpl implements RegisterService {
         System.out.println("certifiedCode = " + certifiedCode);
 
         // 무작위 코드를 이메일로 전송
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("soso.project@gmail.com");
+        message.setTo(reqData.get("email"));
+        message.setSubject("인증메일 테스트");
+        message.setText(certifiedCode);
+        javaMailSender.send(message);
 
         // 무작위 코드를 repository에 저장
         certifiedCodeRepository.repository.add(
