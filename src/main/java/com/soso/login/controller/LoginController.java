@@ -1,9 +1,11 @@
 package com.soso.login.controller;
 
+import com.soso.common.aop.jwt.JwtValidationAOP;
 import com.soso.login.dto.LoginMemberDTO;
 import com.soso.login.service.itf.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +32,12 @@ public class LoginController {
     public ResponseEntity<?> login(@RequestBody LoginMemberDTO loginMemberDTO, HttpServletResponse res) throws Exception {
         System.out.println("loginMemberDTO = " + loginMemberDTO);
         return new ResponseEntity<>(loginService.loginMember(loginMemberDTO, res), HttpStatus.OK);
+    }
+
+    @JwtValidationAOP
+    @GetMapping("/member")
+    public ResponseEntity<?> findLoginMember(@CookieValue String sosoJwtToken) throws Exception {
+        return new ResponseEntity<>(loginService.findLoginMember(sosoJwtToken), HttpStatus.OK);
     }
 
 }

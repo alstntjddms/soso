@@ -28,4 +28,6 @@ public interface LoginService {
      * @return
      */
     public boolean findPassword(String email, String loginId);
+
+    public HashMap<String, String> findLoginMember(String sosoJwtToken);
 }

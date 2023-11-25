@@ -9,6 +9,7 @@ import com.soso.login.dto.MemberDTO;
 import com.soso.login.dto.RegisterMemberDTO;
 import com.soso.login.repository.itf.LoginRAO;
 import com.soso.login.service.itf.LoginService;
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +71,14 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean findPassword(String email, String loginId) {
         return false;
+    }
+
+    @Override
+    public HashMap<String, String> findLoginMember(String sosoJwtToken) {
+        Claims claims = JwtUtils.getJwtTokenClaims(sosoJwtToken);
+        HashMap hashMap = new HashMap();
+        hashMap.put("name", claims.get("name"));
+        hashMap.put("email", claims.get("email"));
+        return hashMap;
     }
 }

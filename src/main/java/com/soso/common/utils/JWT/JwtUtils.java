@@ -51,21 +51,13 @@ public class JwtUtils {
         }
     }
 
-    //
-    public static Claims getJwtTokenInfo(String token){
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
     // JWT에서 사용자명 추출
-    public static String getUsernameFromJwtToken(String token) {
+    public static Claims getJwtTokenClaims(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
                 .getBody();
-        return claims.getSubject();
+        return claims;
     }
 
     // 무작위 문자열로 SECRET_KEY 생성

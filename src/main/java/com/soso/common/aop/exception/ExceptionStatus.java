@@ -19,7 +19,6 @@ public enum ExceptionStatus {
     PASSWORD_LENGTH("비밀번호 길이 잘못됨"),
     PASSWORD_WRONG("비밀번호 틀림"),
     CERTIFIED_CODE_WRONG("인증번호 틀림"),
-
     ;
 
     private final String message;
