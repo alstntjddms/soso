@@ -178,7 +178,7 @@ public class RegisterServiceImpl implements RegisterService {
         MimeMessage message = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
-            helper.setFrom("soso.project@gmail.com");
+            helper.setFrom("소소한 프로젝트 <soso.project@gmail.com>");
             helper.setTo(email);
             helper.setSubject("SOSO PROJECT에서 인증코드를 알려드립니다.");
 
