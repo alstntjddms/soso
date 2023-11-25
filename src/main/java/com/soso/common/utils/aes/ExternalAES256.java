@@ -18,7 +18,7 @@ public class ExternalAES256 {
 
     public ExternalAES256() throws IOException {
 
-        BufferedReader bufferReader = new BufferedReader(new FileReader("C:\\key\\ExternalAES256.txt"));
+        BufferedReader bufferReader = new BufferedReader(new FileReader("C:\\config\\ExternalAES256.txt"));
         key = bufferReader.readLine();
         iv = key.substring(0, 16);
         bufferReader.close();

@@ -21,7 +21,7 @@ public class AES256 {
     private String iv = ""; // 16byte
 
     public AES256() throws IOException {
-        BufferedReader bufferReader = new BufferedReader(new FileReader("C:\\key\\AES256.txt"));
+        BufferedReader bufferReader = new BufferedReader(new FileReader("C:\\config\\AES256.txt"));
         key = bufferReader.readLine();
         iv = key.substring(0, 16);
         bufferReader.close();
