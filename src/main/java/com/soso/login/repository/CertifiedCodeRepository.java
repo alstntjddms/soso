@@ -24,10 +24,11 @@ public class CertifiedCodeRepository {
     }
 
     // 10분마다 repository의 CertifiedCodeDTO의 sendDate요소가 (현재시간-3분)보다 과거이면 삭제한다.
-    @Scheduled(fixedRate = 60 * 3 * 1000) // 600,000 밀리초 = 3분
+    @Scheduled(fixedRate = 60 * 3 * 1000) // 3분
     public void updateCertifiedCodeRepository() {
         for (Iterator<CertifiedCodeDTO> iterator = repository.iterator(); iterator.hasNext();) {
             CertifiedCodeDTO certifiedCodeDTO = iterator.next();
+            System.out.println("certifiedCodeDTO = " + certifiedCodeDTO);
             if (isCertifiedCodeExpired(certifiedCodeDTO)) {
                 iterator.remove();
                 System.out.println("인증코드 삭제 = " + certifiedCodeDTO.getCertifiedCode() + " email = " + certifiedCodeDTO.getEmail());
