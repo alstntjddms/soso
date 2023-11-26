@@ -30,7 +30,7 @@ public class CertifiedCodeRepository {
             CertifiedCodeDTO certifiedCodeDTO = iterator.next();
             System.out.println("certifiedCodeDTO = " + certifiedCodeDTO);
             if (isCertifiedCodeExpired(certifiedCodeDTO)) {
-                iterator.remove();
+                repository.remove(certifiedCodeDTO);
                 System.out.println("인증코드 삭제 = " + certifiedCodeDTO.getCertifiedCode() + " email = " + certifiedCodeDTO.getEmail());
             }
         }
