@@ -20,7 +20,7 @@ public class DomainController {
     DomainService domainService;
 
     @Operation(summary = "도메인 테스트 API", description = "도메인 관련 테스트용 API입니다.")
-    @GetMapping("/domain")
+    @GetMapping
     public ResponseEntity<?> domain(){
             return new ResponseEntity<>(domainService.domain(), HttpStatus.OK);
     }
@@ -32,7 +32,6 @@ public class DomainController {
 
     @PostMapping("/team")
     public ResponseEntity<?> createTeam(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
-        System.out.println("reqData = " + reqData);
         return new ResponseEntity<>(domainService.createTeam(sosoJwtToken, reqData), HttpStatus.OK);
     }
 
