@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soso.domain.repository.itf.DomainRAO">
+    <select id="findTeamsByLoginId" parameterType="java.lang.String" resultType="TeamDTO">
+        SELECT *
+        FROM team
+        WHERE memberId = #{loginId}
+    </select>
+
+    <insert id="createTeam" parameterType="java.util.HashMap">
+        INSERT INTO team( memberId, teamName, teamType, regDate, updDate)
+        VALUES ( #{memberId}, #{teamName}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+</mapper>

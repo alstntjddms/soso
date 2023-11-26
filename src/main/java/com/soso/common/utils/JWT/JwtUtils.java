@@ -23,7 +23,7 @@ public class JwtUtils {
         claims.put("email", email);
         claims.put("loginId", loginId);
         claims.put("name", name);
-        if(name.equals("전민수") || name.equals("이승욱")){
+        if(email.equals("alstntjddms@naver.com") || name.equals("이승욱")){
             claims.put("roles", "admin");
         }else{
             claims.put("roles", "user");

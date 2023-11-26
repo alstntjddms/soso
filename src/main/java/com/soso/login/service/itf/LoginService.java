@@ -2,6 +2,7 @@ package com.soso.login.service.itf;
 
 import com.soso.login.dto.LoginMemberDTO;
 import com.soso.login.dto.MemberDTO;
+import com.soso.domain.dto.TeamDTO;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -29,5 +30,12 @@ public interface LoginService {
      */
     public boolean findPassword(String email, String loginId);
 
+    /**
+     * 로그인한 멤버정보를 조회한다.
+     * @param sosoJwtToken
+     * @return
+     */
     public HashMap<String, String> findLoginMember(String sosoJwtToken);
+
+
 }

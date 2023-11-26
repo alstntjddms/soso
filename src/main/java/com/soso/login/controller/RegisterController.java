@@ -37,7 +37,6 @@ public class RegisterController {
 
     @PostMapping("/member")
     public ResponseEntity<?> login(@RequestBody RegisterMemberDTO registerMemberDTO) throws Exception {
-        System.out.println("registerMemberDTO = " + registerMemberDTO);
         return new ResponseEntity<>(registerService.registerMember(registerMemberDTO), HttpStatus.OK);
     }
 

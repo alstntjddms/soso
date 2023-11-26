@@ -27,10 +27,8 @@ public class LoginController {
         return new ResponseEntity<>("login test", HttpStatus.OK);
     }
 
-
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginMemberDTO loginMemberDTO, HttpServletResponse res) throws Exception {
-        System.out.println("loginMemberDTO = " + loginMemberDTO);
         return new ResponseEntity<>(loginService.loginMember(loginMemberDTO, res), HttpStatus.OK);
     }
 

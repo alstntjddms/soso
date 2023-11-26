@@ -7,9 +7,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
 
 @Tag(name = "도메인 관련 API", description = "Swagger 도메인 테스트용 API")
 @JwtValidationAOP
@@ -24,6 +23,17 @@ public class DomainController {
     @GetMapping("/domain")
     public ResponseEntity<?> domain(){
             return new ResponseEntity<>(domainService.domain(), HttpStatus.OK);
+    }
+
+    @GetMapping("/teams")
+    public ResponseEntity<?> findTeamsByLoginMember(@CookieValue String sosoJwtToken) {
+        return new ResponseEntity<>(domainService.findTeamsByLoginId(sosoJwtToken), HttpStatus.OK);
+    }
+
+    @PostMapping("/team")
+    public ResponseEntity<?> createTeam(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
+        System.out.println("reqData = " + reqData);
+        return new ResponseEntity<>(domainService.createTeam(sosoJwtToken, reqData), HttpStatus.OK);
     }
 
 }

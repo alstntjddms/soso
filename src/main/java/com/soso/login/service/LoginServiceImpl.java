@@ -6,7 +6,6 @@ import com.soso.common.utils.JWT.JwtUtils;
 import com.soso.common.utils.hash.SHA256;
 import com.soso.login.dto.LoginMemberDTO;
 import com.soso.login.dto.MemberDTO;
-import com.soso.login.dto.RegisterMemberDTO;
 import com.soso.login.repository.itf.LoginRAO;
 import com.soso.login.service.itf.LoginService;
 import io.jsonwebtoken.Claims;
@@ -44,20 +43,20 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // DB에서 아이디에 해당되는 Member가져옴
-        RegisterMemberDTO registerMemberDTO = rao.findMemberByLoginId(loginMemberDTO.getLoginId());
+        MemberDTO memberDTO = rao.findMemberByLoginId(loginMemberDTO.getLoginId());
 
         // Member null 체크
-        if (registerMemberDTO == null) {
+        if (memberDTO == null) {
             throw new CustomException(ExceptionStatus.LOGIN_ID_WRONG);
         }
 
         // dbSalt와 사용자입력 password를 hash후 db에 저장된 hash된 password와 같은지 비교
-        if(!sha256.hash(loginMemberDTO.getPassword(), registerMemberDTO.getSalt()).equals(registerMemberDTO.getPassword())){
+        if(!sha256.hash(loginMemberDTO.getPassword(), memberDTO.getSalt()).equals(memberDTO.getPassword())){
             throw new CustomException(ExceptionStatus.PASSWORD_WRONG);
         }
 
         // JWT생성
-        String jwt = JwtUtils.generateJwtToken(registerMemberDTO.getEmail(), registerMemberDTO.getLoginId(), registerMemberDTO.getName());
+        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getLoginId(), memberDTO.getName());
 
         // response cookie jwt
         Cookie cookie = new Cookie("sosoJwtToken", jwt);
@@ -81,4 +80,5 @@ public class LoginServiceImpl implements LoginService {
         hashMap.put("email", claims.get("email"));
         return hashMap;
     }
+
 }
