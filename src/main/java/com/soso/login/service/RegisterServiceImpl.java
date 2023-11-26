@@ -253,9 +253,6 @@ public class RegisterServiceImpl implements RegisterService {
             helper.setText(emailContent, true);
             javaMailSender.send(message);
 
-            // 무작위 코드를 repository에 저장
-            certifiedCodeRepository.repository.add(
-                    new CertifiedCodeDTO(email, certifiedCode, new Timestamp(System.currentTimeMillis())));
             return true;
         } catch (MessagingException e) {
             throw new CustomException(ExceptionStatus.FAIL_SEND_MAIL);
