@@ -15,7 +15,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 @Aspect
 public class JwtValidationAspect {
 
-    static final String TOKEN_NAME = "sosoJwtToken";
+    private static final String TOKEN_NAME = "sosoJwtToken";
 
     @Before("@within(JwtValidationAOP) || @annotation(JwtValidationAOP)")
     public void validateJwt() {
