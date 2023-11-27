@@ -1,5 +1,6 @@
 package com.soso.common.config;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -9,15 +10,19 @@ import org.springframework.context.annotation.PropertySource;
 public class GlobalPropertySource {
 
     // DB설정 불러오기
+    @Getter
     @Value("${spring.datasource.driverClassName}")
     private String driverClassName;
 
+    @Getter
     @Value("${spring.datasource.url}")
     private String url;
 
+    @Getter
     @Value("${spring.datasource.username}")
     private String username;
 
+    @Getter
     @Value("${spring.datasource.password}")
     private String password;
 
@@ -40,43 +45,4 @@ public class GlobalPropertySource {
     @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
     private String mailEnable;
 
-    public String getDriverClassName() {
-        return driverClassName;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getMailHost() {
-        return mailHost;
-    }
-
-    public String getMailPort() {
-        return mailPort;
-    }
-
-    public String getMailUsername() {
-        return mailUsername;
-    }
-
-    public String getMailPassword() {
-        return mailPassword;
-    }
-
-    public String getMailAuth() {
-        return mailAuth;
-    }
-
-    public String getMailEnable() {
-        return mailEnable;
-    }
 }

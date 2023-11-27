@@ -1,7 +1,6 @@
 package com.soso.common.utils.hash;
 
 import org.springframework.stereotype.Component;
-
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.Base64;
