@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.soso.domain.repository.itf.DomainRAO">
-    <select id="findTeamsByLoginId" parameterType="java.lang.String" resultType="TeamDTO">
+    <select id="findTeamsByLoginId" parameterType="java.lang.Integer" resultType="TeamDTO">
         SELECT *
         FROM team
         WHERE memberId = #{loginId}
@@ -13,7 +13,7 @@
         VALUES ( #{memberId}, #{teamName}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     </insert>
 
-    <select id="findDatasByLoginMember" parameterType="java.lang.String" resultType="DataDTO">
+    <select id="findDatasByLoginMember" parameterType="java.lang.Integer" resultType="DataDTO">
         SELECT *
         FROM data
         WHERE toMemberId = #{loginId}

@@ -16,11 +16,11 @@ public interface LoginRAO {
         public List<HashMap> test();
 
         /**
-         * loginId로 멤버 정보를 조회한다.
-         * @param loginId
+         * memberId로 멤버 정보를 조회한다.
+         * @param memberId
          * @return
          */
-        public MemberDTO findMemberByLoginId(String loginId);
+        public MemberDTO findMemberByLoginId(String memberId);
 
 
 }

@@ -26,7 +26,7 @@ public class ExceptionController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> exceptionRequest(Exception e){
-        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getMessage()
+        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getCause().getMessage()
                     + " [발생 시간] : " + new Timestamp(System.currentTimeMillis()));
         return new ResponseEntity<ExceptionResponse>(
                 new ExceptionResponse(
