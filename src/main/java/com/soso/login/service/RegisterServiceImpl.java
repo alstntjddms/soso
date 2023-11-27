@@ -45,7 +45,7 @@ public class RegisterServiceImpl implements RegisterService {
         }
 
         // loginId 중복 검사
-        if(!duplicatedCheckLoginId(reqData.get("loginId"))){
+        if(duplicatedCheckLoginId(reqData.get("loginId"))){
             throw new CustomException(ExceptionStatus.LOGIN_ID_DUPLICATED);
         }
         return true;
@@ -59,7 +59,7 @@ public class RegisterServiceImpl implements RegisterService {
         }
         
         // 이메일 중복 검사
-        if(!duplicatedCheckEmail(reqData.get("email"))){
+        if(duplicatedCheckEmail(reqData.get("email"))){
             throw new CustomException(ExceptionStatus.EMAIL_DUPLICATED);
         }
         return true;
@@ -68,7 +68,7 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public boolean sendCertifiedCodeToMail(HashMap<String, String> reqData) {
         // 이메일 중복체크
-        if(!duplicatedCheckEmail(reqData.get("email"))){
+        if(duplicatedCheckEmail(reqData.get("email"))){
             throw new CustomException(ExceptionStatus.EMAIL_DUPLICATED);
         }
 
@@ -85,7 +85,7 @@ public class RegisterServiceImpl implements RegisterService {
         sendMail(reqData.get("email"), certifiedCode);
 
         // 무작위 코드를 repository에 저장
-        certifiedCodeRepository.repository.add(
+        CertifiedCodeRepository.repository.add(
                 new CertifiedCodeDTO(reqData.get("email"), certifiedCode, new Timestamp(System.currentTimeMillis())));
 
         return true;
@@ -93,7 +93,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public boolean checkEmailFromCertifiedCode(HashMap<String, String> reqData) {
-        if(!checkCertifiedCodeToEmail(reqData.get("email"), reqData.get("certifiedCode"))){
+        if(checkCertifiedCodeToEmail(reqData.get("email"), reqData.get("certifiedCode"))){
             throw new CustomException(ExceptionStatus.CERTIFIED_CODE_WRONG);
         }
         return true;
@@ -102,17 +102,17 @@ public class RegisterServiceImpl implements RegisterService {
     @Override
     public synchronized String registerMember(RegisterMemberDTO registerMemberDTO) throws Exception {
         // 아이디 중복체크
-        if(!duplicatedCheckLoginId(registerMemberDTO.getLoginId())){
+        if(duplicatedCheckLoginId(registerMemberDTO.getLoginId())){
             throw new CustomException(ExceptionStatus.LOGIN_ID_DUPLICATED);
         }
 
         // 이메일 중복체크
-        if(!duplicatedCheckEmail(registerMemberDTO.getEmail())){
+        if(duplicatedCheckEmail(registerMemberDTO.getEmail())){
             throw new CustomException(ExceptionStatus.EMAIL_DUPLICATED);
         }
 
         // 인증코드 체크
-        if(!checkCertifiedCodeToEmail(registerMemberDTO.getEmail(), registerMemberDTO.getCertifiedCode())){
+        if(checkCertifiedCodeToEmail(registerMemberDTO.getEmail(), registerMemberDTO.getCertifiedCode())){
             throw new CustomException(ExceptionStatus.CERTIFIED_CODE_WRONG);
         }
 
@@ -140,24 +140,15 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     public boolean duplicatedCheckLoginId(String loginId) {
-        if(rao.checkLoginIdDuplicated(loginId) == null){
-            return true;
-        }
-        return false;
+        return rao.checkLoginIdDuplicated(loginId) != null;
     }
 
     public boolean duplicatedCheckEmail(String email) {
-        if(rao.checkEmailDuplicated(email) == null){
-            return true;
-        }
-        return false;
+        return rao.checkEmailDuplicated(email) != null;
     }
 
     public boolean checkCertifiedCodeToEmail(String email, String certifiedCode) {
-        if(certifiedCodeRepository.checkEMailFromCertifiedCode(email, certifiedCode)){
-            return true;
-        }
-        return false;
+        return !certifiedCodeRepository.checkEMailFromCertifiedCode(email, certifiedCode);
     }
 
     public static String generateCertifiedCode() {

@@ -36,7 +36,7 @@ public class RegisterController {
     }
 
     @PostMapping("/member")
-    public ResponseEntity<?> login(@RequestBody RegisterMemberDTO registerMemberDTO) throws Exception {
+    public ResponseEntity<?> registerMember(@RequestBody RegisterMemberDTO registerMemberDTO) throws Exception {
         return new ResponseEntity<>(registerService.registerMember(registerMemberDTO), HttpStatus.OK);
     }
 

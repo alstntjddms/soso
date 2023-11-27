@@ -26,11 +26,6 @@ public class LoginServiceImpl implements LoginService {
     SHA256 sha256;
 
     @Override
-    public List<HashMap> test() {
-        return rao.test();
-    }
-
-    @Override
     public MemberDTO loginMember(LoginMemberDTO loginMemberDTO, HttpServletResponse response) throws Exception {
         // 아이디, 비밀번호 유효성 검사 ex) 아이디 6자이상 영어, 비밀번호 8자 이상
         // loginId 6자 이하 OR loginId 30자 이상
@@ -75,9 +70,9 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public HashMap<String, String> findLoginMember(String sosoJwtToken) {
         Claims claims = JwtUtils.getJwtTokenClaims(sosoJwtToken);
-        HashMap hashMap = new HashMap();
-        hashMap.put("name", claims.get("name"));
-        hashMap.put("email", claims.get("email"));
+        HashMap<String, String> hashMap = new HashMap<String, String>();
+        hashMap.put("name", claims.get("name").toString());
+        hashMap.put("email", claims.get("email").toString());
         return hashMap;
     }
 

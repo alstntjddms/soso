@@ -14,10 +14,7 @@ public class CertifiedCodeRepository {
     public boolean checkEMailFromCertifiedCode(String email, String certifiedCode){
         for (CertifiedCodeDTO certifiedCodeDTO : repository) {
             if (certifiedCodeDTO.getEmail().equals(email) && certifiedCodeDTO.getCertifiedCode().equals(certifiedCode)) {
-                if(isCertifiedCodeExpired(certifiedCodeDTO)){
-                    return false;
-                }
-                return true;
+                return !isCertifiedCodeExpired(certifiedCodeDTO);
             }
         }
         return false;

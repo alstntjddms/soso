@@ -23,13 +23,8 @@ public class LoginController {
 
     @Autowired
     LoginService loginService;
-    
-    @Operation(summary = "로그인 테스트 API", description = "로그인 관련 테스트용 API입니다.")
-    @GetMapping("/test")
-    public ResponseEntity<?> test(){
-        return new ResponseEntity<>("login test", HttpStatus.OK);
-    }
 
+    @Operation(summary = "로그인 테스트 API", description = "로그인 관련 테스트용 API입니다.")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginMemberDTO loginMemberDTO, HttpServletResponse res) throws Exception {
         return new ResponseEntity<>(loginService.loginMember(loginMemberDTO, res), HttpStatus.OK);

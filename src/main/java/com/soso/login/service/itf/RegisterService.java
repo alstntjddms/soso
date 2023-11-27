@@ -29,7 +29,7 @@ public interface RegisterService {
 
     /**
      * 이메일 인증번호를 검증한다.
-     * @param email
+     * @param reqData
      * @return
      */
     public boolean checkEmailFromCertifiedCode(HashMap<String, String > reqData);
