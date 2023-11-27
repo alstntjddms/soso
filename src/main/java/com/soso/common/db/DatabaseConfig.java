@@ -1,5 +1,6 @@
 package com.soso.common.db;
 
+import com.soso.common.config.GlobalPropertySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

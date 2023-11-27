@@ -1,4 +1,4 @@
-package com.soso.common.db;
+package com.soso.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
