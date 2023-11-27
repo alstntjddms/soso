@@ -35,4 +35,9 @@ public class DomainController {
         return new ResponseEntity<>(domainService.createTeam(sosoJwtToken, reqData), HttpStatus.OK);
     }
 
+    @GetMapping("/datas")
+    public ResponseEntity<?> findDatasByLoginMember(@CookieValue String sosoJwtToken) {
+        return new ResponseEntity<>(domainService.findDatasByLoginMember(sosoJwtToken), HttpStatus.OK);
+    }
+
 }

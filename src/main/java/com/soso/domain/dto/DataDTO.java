@@ -6,12 +6,12 @@ import java.sql.Timestamp;
 
 @Data
 public class DataDTO {
-    int seq;
+    int id;
     int index;
     String state;
     String fromMemberId;
     String toMemberId;
-    String teamID;
+    String teamId;
     String title;
     String content;
     boolean delYn;

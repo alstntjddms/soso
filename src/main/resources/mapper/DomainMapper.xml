@@ -12,4 +12,10 @@
         INSERT INTO team( memberId, teamName, teamType, regDate, updDate)
         VALUES ( #{memberId}, #{teamName}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     </insert>
+
+    <select id="findDatasByLoginMember" parameterType="java.lang.String" resultType="DataDTO">
+        SELECT *
+        FROM data
+        WHERE toMemberId = #{loginId}
+    </select>
 </mapper>

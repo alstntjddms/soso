@@ -20,6 +20,7 @@ public enum ExceptionStatus {
     PASSWORD_WRONG("비밀번호 틀림"),
     CERTIFIED_CODE_WRONG("인증번호 틀림"),
     FAIL_SEND_MAIL("이메일 전송 실패함"),
+
     ;
 
     private final String message;
