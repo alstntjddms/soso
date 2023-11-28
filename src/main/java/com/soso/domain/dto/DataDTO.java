@@ -9,9 +9,9 @@ public class DataDTO {
     int id;
     int index;
     String state;
-    String fromMemberId;
-    String toMemberId;
-    String teamId;
+    int fromMemberId;
+    int toMemberId;
+    int teamId;
     String title;
     String content;
     boolean delYn;
