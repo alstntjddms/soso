@@ -1,0 +1,43 @@
+-- soso2024.`member` definition
+
+CREATE TABLE `member` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `loginId` varchar(500) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `tempPassword` tinyint(1) NOT NULL,
+  `salt` varchar(300) NOT NULL,
+  `email` varchar(500) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `regDate` timestamp NOT NULL,
+  `updDate` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- soso2024.team definition
+
+CREATE TABLE `team` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `memberId` int(11) NOT NULL,
+  `teamName` varchar(300) NOT NULL,
+  `teamType` int(11) NOT NULL,
+  `regDate` timestamp NOT NULL,
+  `updDate` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- soso2024.`data` definition
+
+CREATE TABLE `data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dataIndex` int(11) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `fromMemberId` int(11) NOT NULL,
+  `toMemberId` int(11) NOT NULL,
+  `teamId` int(11) NOT NULL,
+  `title` varchar(300) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `delYn` tinyint(1) NOT NULL,
+  `regDate` timestamp NOT NULL,
+  `updDate` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

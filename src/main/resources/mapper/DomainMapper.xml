@@ -13,9 +13,22 @@
         VALUES ( #{memberId}, #{teamName}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     </insert>
 
-    <select id="findDatasByLoginMember" parameterType="java.lang.Integer" resultType="DataDTO">
-        SELECT *
+    <select id="findDatasByLoginMember" parameterType="java.lang.Integer" resultType="ResponseDataDTO">
+        SELECT id, dataIndex, state, title, regDate
         FROM data
-        WHERE toMemberId = #{loginId}
+        WHERE toMemberId = #{memberId}
+        ORDER BY dataIndex
     </select>
+
+    <insert id="registerDataByToMemberId" parameterType="RegisterDataDTO">
+        INSERT INTO data( dataIndex, state, fromMemberId, toMemberId, teamId, title, content,
+                        delYn, regDate, updDate)
+        VALUES ( #{dataIndex}, '요청', #{fromMemberId}, #{toMemberId}, #{teamId}, #{title}, #{content},
+                        0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+    <update id="updateIndexByToMemberId" parameterType="java.lang.Integer">
+        UPDATE data
+        SET dataIndex = dataIndex + 1
+        WHERE state = '요청' AND toMemberId = #{memberId};
+    </update>
 </mapper>

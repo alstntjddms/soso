@@ -1,8 +1,6 @@
 package com.soso.domain.repository.itf;
 
-import com.soso.domain.dto.DataDTO;
-import com.soso.domain.dto.DatasDTO;
-import com.soso.domain.dto.TeamDTO;
+import com.soso.domain.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +17,10 @@ public interface DomainRAO {
     
     public void createTeam(HashMap<String, String> teamName);
 
-    public List<DataDTO> findDatasByLoginMember(int memberId);
+    public List<ResponseDataDTO> findDatasByLoginMember(int memberId);
+
+    public int registerDataByToMemberId(RegisterDataDTO registerDataDTO);
+
+    public void updateIndexByToMemberId(int memberId);
 
 }

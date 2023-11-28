@@ -24,14 +24,14 @@ public class ExceptionController {
                 ), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionResponse> exceptionRequest(Exception e){
-        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getCause().getMessage()
-                    + " [발생 시간] : " + new Timestamp(System.currentTimeMillis()));
-        return new ResponseEntity<ExceptionResponse>(
-                new ExceptionResponse(
-                        "알수 없는 에러", e.getMessage(), new Timestamp(System.currentTimeMillis())
-                ), HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ExceptionResponse> exceptionRequest(Exception e){
+//        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getCause().getMessage()
+//                    + " [발생 시간] : " + new Timestamp(System.currentTimeMillis()));
+//        return new ResponseEntity<ExceptionResponse>(
+//                new ExceptionResponse(
+//                        "알수 없는 에러", e.getMessage(), new Timestamp(System.currentTimeMillis())
+//                ), HttpStatus.BAD_REQUEST);
+//    }
 
 }

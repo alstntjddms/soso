@@ -40,4 +40,9 @@ public class DomainController {
         return new ResponseEntity<>(domainService.findDatasByLoginMember(sosoJwtToken), HttpStatus.OK);
     }
 
+    @PostMapping("/data")
+    public ResponseEntity<?> registerDataByFromMemberId(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
+        return new ResponseEntity<>(domainService.registerDataByFromMemberId(sosoJwtToken, reqData), HttpStatus.OK);
+    }
+
 }
