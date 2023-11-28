@@ -11,4 +11,5 @@ public class ResponseDataDTO {
     String state;
     String title;
     Timestamp regDate;
+    Timestamp updDate;
 }

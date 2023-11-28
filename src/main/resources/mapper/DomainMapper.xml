@@ -14,7 +14,7 @@
     </insert>
 
     <select id="findDatasByLoginMember" parameterType="java.lang.Integer" resultType="ResponseDataDTO">
-        SELECT id, dataIndex, state, title, regDate
+        SELECT id, dataIndex, state, title, regDate, updDate
         FROM data
         WHERE toMemberId = #{memberId}
         ORDER BY dataIndex
@@ -26,9 +26,19 @@
         VALUES ( #{dataIndex}, '요청', #{fromMemberId}, #{toMemberId}, #{teamId}, #{title}, #{content},
                         0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
     </insert>
+
     <update id="updateIndexByToMemberId" parameterType="java.lang.Integer">
         UPDATE data
         SET dataIndex = dataIndex + 1
         WHERE state = '요청' AND toMemberId = #{memberId};
     </update>
+
+    <update id="updateDataByFromMemberId" parameterType="ResponseDataDTO">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE data
+            SET dataIndex = #{item.dataIndex}, state = #{item.state}, updDate = CURRENT_TIMESTAMP
+            WHERE id = #{item.id} AND (dataIndex != #{item.dataIndex} OR state != #{item.state})
+        </foreach>
+    </update>
+
 </mapper>

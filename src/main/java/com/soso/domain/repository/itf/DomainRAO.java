@@ -3,8 +3,6 @@ package com.soso.domain.repository.itf;
 import com.soso.domain.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,5 +20,7 @@ public interface DomainRAO {
     public int registerDataByToMemberId(RegisterDataDTO registerDataDTO);
 
     public void updateIndexByToMemberId(int memberId);
+
+    public int updateDataByFromMemberId(List datasDTO);
 
 }

@@ -1,6 +1,8 @@
 package com.soso.domain.controller;
 
 import com.soso.common.aop.jwt.JwtValidationAOP;
+import com.soso.domain.dto.DatasDTO;
+import com.soso.domain.dto.ResponseDatasDTO;
 import com.soso.domain.service.itf.DomainService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
+import java.util.List;
 
 @Tag(name = "도메인 관련 API", description = "Swagger 도메인 테스트용 API")
 @JwtValidationAOP
@@ -43,6 +46,11 @@ public class DomainController {
     @PostMapping("/data")
     public ResponseEntity<?> registerDataByFromMemberId(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
         return new ResponseEntity<>(domainService.registerDataByFromMemberId(sosoJwtToken, reqData), HttpStatus.OK);
+    }
+
+    @PatchMapping("/datas")
+    public ResponseEntity<?> updateDataByFromMemberId(@CookieValue String sosoJwtToken, @RequestBody ResponseDatasDTO responseDatasDTO) {
+        return new ResponseEntity<>(domainService.updateDataByFromMemberId(sosoJwtToken, responseDatasDTO), HttpStatus.OK);
     }
 
 }

@@ -74,6 +74,19 @@ public class DomainServiceImpl implements DomainService {
 
     }
 
+    @Override
+    public int updateDataByFromMemberId(String sosoJwtToken, ResponseDatasDTO responseDatasDTO) {
+        String loginId = JwtUtils.getJwtTokenClaims(sosoJwtToken).get("loginId").toString();
+        int memberId = loginRAO.findMemberByLoginId(loginId).getId();
+
+        List<ResponseDataDTO> mergeList = new ArrayList<>();
+        mergeList.addAll(responseDatasDTO.get요청());
+        mergeList.addAll(responseDatasDTO.get진행중());
+        mergeList.addAll(responseDatasDTO.get검토요청());
+        mergeList.addAll(responseDatasDTO.get결과());
+        return rao.updateDataByFromMemberId(mergeList);
+    }
+
 
     public ResponseDatasDTO processDatas(List<ResponseDataDTO> dataDTOList) {
         Map<String, List<ResponseDataDTO>> allDataDTO = dataDTOList.stream()
