@@ -20,6 +20,12 @@
         ORDER BY dataIndex
     </select>
 
+    <select id="findDataByDataId" parameterType="java.lang.Integer" resultType="DataDTO">
+        SELECT *
+        FROM data
+        WHERE id = #{id}
+    </select>
+
     <insert id="registerDataByToMemberId" parameterType="RegisterDataDTO">
         INSERT INTO data( dataIndex, state, fromMemberId, toMemberId, teamId, title, content,
                         delYn, regDate, updDate)

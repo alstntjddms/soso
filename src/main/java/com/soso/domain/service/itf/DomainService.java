@@ -1,5 +1,6 @@
 package com.soso.domain.service.itf;
 
+import com.soso.domain.dto.DataDTO;
 import com.soso.domain.dto.DatasDTO;
 import com.soso.domain.dto.ResponseDatasDTO;
 import com.soso.domain.dto.TeamDTO;
@@ -27,6 +28,7 @@ public interface DomainService {
 
     public ResponseDatasDTO findDatasByLoginMember(String sosoJwtToken);
 
+    public DataDTO findDataByDataId(String sosoJwtToken, int id);
     public int registerDataByFromMemberId(String sosoJwtToken, HashMap<String, String> reqData);
 
     public int updateDataByFromMemberId(String sosoJwtToken, ResponseDatasDTO responseDatasDTO);

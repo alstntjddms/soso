@@ -17,6 +17,8 @@ public interface DomainRAO {
 
     public List<ResponseDataDTO> findDatasByLoginMember(int memberId);
 
+    public DataDTO findDataByDataId(int id);
+
     public int registerDataByToMemberId(RegisterDataDTO registerDataDTO);
 
     public void updateIndexByToMemberId(int memberId);

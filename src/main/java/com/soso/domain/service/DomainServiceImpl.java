@@ -1,5 +1,7 @@
 package com.soso.domain.service;
 
+import com.soso.common.aop.exception.CustomException;
+import com.soso.common.aop.exception.ExceptionStatus;
 import com.soso.common.utils.JWT.JwtUtils;
 import com.soso.domain.dto.*;
 import com.soso.domain.repository.itf.DomainRAO;
@@ -45,6 +47,17 @@ public class DomainServiceImpl implements DomainService {
         String loginId = JwtUtils.getJwtTokenClaims(sosoJwtToken).get("loginId").toString();
         List<ResponseDataDTO> a = rao.findDatasByLoginMember(loginRAO.findMemberByLoginId(loginId).getId());
         return processDatas(a);
+    }
+
+    @Override
+    public DataDTO findDataByDataId(String sosoJwtToken, int id) {
+        String loginId = JwtUtils.getJwtTokenClaims(sosoJwtToken).get("loginId").toString();
+        int memberId = loginRAO.findMemberByLoginId(loginId).getId();
+        DataDTO dataDTO = rao.findDataByDataId(id);
+        if(dataDTO.getToMemberId() != memberId){
+            throw new CustomException(ExceptionStatus.NO_INQUIRY_PERMISSION);
+        }
+        return dataDTO;
     }
 
     @Override
