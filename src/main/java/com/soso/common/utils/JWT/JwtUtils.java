@@ -3,6 +3,7 @@ package com.soso.common.utils.JWT;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.micrometer.common.util.StringUtils;
 
 import java.security.SecureRandom;
 import java.util.Base64;
@@ -17,13 +18,16 @@ public class JwtUtils {
     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 토큰 만료 시간 (24시간)
 
     // JWT 생성
-    public static String generateJwtToken(String email, String loginId, String name) {
+    public static String generateJwtToken(String email, String loginId, String name, String team) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("iss", "soso_server");
         claims.put("email", email);
         claims.put("loginId", loginId);
         claims.put("name", name);
-        if(email.equals("alstntjddms@naver.com") || name.equals("이승욱")){
+        if(!StringUtils.isBlank(team)){
+            claims.put("teamId", team);
+        }
+        if(email.equals("alstntjddms@naver.com")){
             claims.put("roles", "admin");
         }else{
             claims.put("roles", "user");

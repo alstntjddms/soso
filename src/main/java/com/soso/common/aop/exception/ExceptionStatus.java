@@ -21,6 +21,7 @@ public enum ExceptionStatus {
     CERTIFIED_CODE_WRONG("인증번호 틀림"),
     FAIL_SEND_MAIL("이메일 전송 실패함"),
     NO_INQUIRY_PERMISSION("데이터 조회권한 없음."),
+    INVALID_LOGIN("잘못된 로그인"),
     ;
 
     private final String message;

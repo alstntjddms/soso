@@ -51,11 +51,11 @@ public class LoginServiceImpl implements LoginService {
         }
 
         // JWT생성
-        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getLoginId(), memberDTO.getName());
+        String jwt = JwtUtils.generateJwtToken(memberDTO.getEmail(), memberDTO.getLoginId(), memberDTO.getName(), null);
 
         // response cookie jwt
         Cookie cookie = new Cookie("sosoJwtToken", jwt);
-        cookie.setMaxAge(24 * 60 * 60); // 쿠키 만료 시간 (24시간)
+        cookie.setMaxAge(16 * 60 * 60); // 쿠키 만료 시간 (24시간)
         cookie.setPath("/"); // 쿠키의 유효 경로 설정 (전체 경로에 대해 유효)
         response.addCookie(cookie);
 

@@ -11,18 +11,4 @@ import java.util.List;
 public interface DomainRAO {
     public String domain();
 
-    public List<TeamDTO> findTeamsByLoginId(int loginId);
-    
-    public void createTeam(HashMap<String, String> teamName);
-
-    public List<ResponseDataDTO> findDatasByLoginMember(int memberId);
-
-    public DataDTO findDataByDataId(int id);
-
-    public int registerDataByToMemberId(RegisterDataDTO registerDataDTO);
-
-    public void updateIndexByToMemberId(int memberId);
-
-    public int updateDataByFromMemberId(List datasDTO);
-
 }

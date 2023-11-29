@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soso.domain.repository.itf.DataRAO">
+    <select id="findDatasByLoginMember" parameterType="java.lang.String" resultType="ResponseDataDTO">
+        SELECT id, dataIndex, state, title, regDate, updDate
+        FROM data
+        WHERE toMemberId = #{memberId} AND teamId = #{teamId}
+        ORDER BY dataIndex
+    </select>
+
+    <select id="findDataByDataId" parameterType="java.lang.Integer" resultType="DataDTO">
+        SELECT *
+        FROM data
+        WHERE id = #{id}
+    </select>
+
+    <insert id="registerDataByToMemberId" parameterType="RegisterDataDTO">
+        INSERT INTO data( dataIndex, state, fromMemberId, toMemberId, teamId, title, content,
+                        delYn, regDate, updDate)
+        VALUES ( #{dataIndex}, '요청', #{fromMemberId}, #{toMemberId}, #{teamId}, #{title}, #{content},
+                        0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+
+    <update id="updateDataByFromMemberId" parameterType="DataDTO">
+        UPDATE data
+        SET title = #{title}, content = #{content}, updDate = CURRENT_TIMESTAMP
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateIndexByToMemberId" parameterType="java.lang.Integer">
+        UPDATE data
+        SET dataIndex = dataIndex + 1
+        WHERE state = '요청' AND toMemberId = #{memberId};
+    </update>
+
+    <update id="updateDatasByFromMemberId" parameterType="ResponseDataDTO">
+        <foreach collection="list" item="item" separator=";">
+            UPDATE data
+            SET dataIndex = #{item.dataIndex}, state = #{item.state}, updDate = CURRENT_TIMESTAMP
+            WHERE id = #{item.id} AND (dataIndex != #{item.dataIndex} OR state != #{item.state})
+        </foreach>
+    </update>
+
+</mapper>

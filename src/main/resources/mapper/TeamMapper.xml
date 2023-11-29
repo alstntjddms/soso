@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soso.domain.repository.itf.TeamRAO">
+    <select id="findTeamsByLoginId" parameterType="java.lang.Integer" resultType="TeamDTO">
+        SELECT t.id, t.createMemberId, t.teamName, t.teamType, t.regDate, t.updDate
+        FROM team t
+        WHERE t.id IN (SELECT tm.teamId FROM team_member tm WHERE tm.memberId = #{memberId});
+    </select>
+
+    <insert id="createTeam" parameterType="java.util.HashMap" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO team ( createMemberId, teamName, teamType, regDate, updDate)
+        VALUES ( #{createMemberId}, #{teamName}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    </insert>
+
+    <insert id="registerTeamMember" parameterType="java.lang.Integer">
+        INSERT INTO team_member ( teamId, memberId )
+        VALUES ( #{teamId}, #{memberId} )
+    </insert>
+
+    <select id="findTeamMembersByLoginMember" parameterType="java.lang.Integer" resultType="TeamMemberDTO">
+        SELECT
+        t.id AS teamId,
+        t.teamName AS teamName,
+        t.teamType AS teamType,
+        m.id AS memberId,
+        m.name AS memberName
+        FROM team t
+        LEFT JOIN team_member tm ON t.id = tm.teamId
+        LEFT JOIN member m ON tm.memberId = m.id
+        WHERE t.id = #{teamId};
+    </select>
+</mapper>

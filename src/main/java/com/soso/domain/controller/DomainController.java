@@ -28,34 +28,5 @@ public class DomainController {
             return new ResponseEntity<>(domainService.domain(), HttpStatus.OK);
     }
 
-    @GetMapping("/teams")
-    public ResponseEntity<?> findTeamsByLoginMember(@CookieValue String sosoJwtToken) {
-        return new ResponseEntity<>(domainService.findTeamsByLoginId(sosoJwtToken), HttpStatus.OK);
-    }
-
-    @PostMapping("/team")
-    public ResponseEntity<?> createTeam(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
-        return new ResponseEntity<>(domainService.createTeam(sosoJwtToken, reqData), HttpStatus.OK);
-    }
-
-    @GetMapping("/datas")
-    public ResponseEntity<?> findDatasByLoginMember(@CookieValue String sosoJwtToken) {
-        return new ResponseEntity<>(domainService.findDatasByLoginMember(sosoJwtToken), HttpStatus.OK);
-    }
-
-    @GetMapping("/data/{id}")
-    public ResponseEntity<?> findDataByDataId(@CookieValue String sosoJwtToken, @PathVariable("id") int id) {
-        return new ResponseEntity<>(domainService.findDataByDataId(sosoJwtToken, id), HttpStatus.OK);
-    }
-
-    @PostMapping("/data")
-    public ResponseEntity<?> registerDataByFromMemberId(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
-        return new ResponseEntity<>(domainService.registerDataByFromMemberId(sosoJwtToken, reqData), HttpStatus.OK);
-    }
-
-    @PatchMapping("/datas")
-    public ResponseEntity<?> updateDataByFromMemberId(@CookieValue String sosoJwtToken, @RequestBody ResponseDatasDTO responseDatasDTO) {
-        return new ResponseEntity<>(domainService.updateDataByFromMemberId(sosoJwtToken, responseDatasDTO), HttpStatus.OK);
-    }
 
 }
