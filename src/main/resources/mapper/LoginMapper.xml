@@ -8,4 +8,11 @@
         WHERE loginId = #{loginId}
     </select>
 
+    <select id="findMemberByEmail" parameterType="java.lang.String" resultType="MemberDTO">
+        SELECT *
+        FROM member
+        WHERE email = #{email}
+    </select>
+
+
 </mapper>

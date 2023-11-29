@@ -3,6 +3,7 @@ package com.soso.domain.service.itf;
 import com.soso.domain.dto.TeamDTO;
 import com.soso.domain.dto.TeamMemberDTO;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,4 +39,12 @@ public interface TeamService {
      * @param sosoJwtToken
      */
     public List<TeamMemberDTO> findTeamMembersByLoginMember(String sosoJwtToken);
+
+    /**
+     * 팀에 이메일로 멤버를 추가한다.
+     * @param sosoJwtToken
+     * @param email
+     * @return
+     */
+    public String addMemberByEmail(String sosoJwtToken, HashMap<String, String> reqData);
 }

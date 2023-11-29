@@ -20,4 +20,7 @@ public interface TeamRAO {
     public void registerTeamMember(@Param("teamId") int teamId, @Param("memberId") int memberId);
 
     public List<TeamMemberDTO> findTeamMembersByLoginMember(int teamId);
+
+    public void addMemberByEmail(@Param("teamId") String teamId, @Param("memberId") String memberId);
+
 }

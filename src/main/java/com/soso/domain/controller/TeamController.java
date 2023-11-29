@@ -43,4 +43,10 @@ public class TeamController {
         return new ResponseEntity<>(teamService.findTeamMembersByLoginMember(sosoJwtToken), HttpStatus.OK);
     }
 
+    @PostMapping("/addMemberByEmail")
+    public ResponseEntity<?> addMember(@CookieValue String sosoJwtToken, @RequestBody HashMap<String, String> reqData) {
+        System.out.println("reqData = " + reqData);
+        return new ResponseEntity<>(teamService.addMemberByEmail(sosoJwtToken, reqData), HttpStatus.OK);
+    }
+
 }

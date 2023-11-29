@@ -22,6 +22,7 @@ public enum ExceptionStatus {
     FAIL_SEND_MAIL("이메일 전송 실패함"),
     NO_INQUIRY_PERMISSION("데이터 조회권한 없음."),
     INVALID_LOGIN("잘못된 로그인"),
+    NOT_FOUND_EMAIL_BY_MEMBER("이메일로 멤버를 찾을 수 없음"),
     ;
 
     private final String message;

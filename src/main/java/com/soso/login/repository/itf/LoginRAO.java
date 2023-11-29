@@ -22,5 +22,6 @@ public interface LoginRAO {
          */
         public MemberDTO findMemberByLoginId(String memberId);
 
+        public MemberDTO findMemberByEmail(String email);
 
 }

@@ -30,4 +30,9 @@
         LEFT JOIN member m ON tm.memberId = m.id
         WHERE t.id = #{teamId};
     </select>
+
+    <insert id="addMemberByEmail" parameterType="java.lang.String">
+        INSERT INTO team_member ( teamId, memberId )
+        VALUES ( #{teamId}, #{memberId} )
+    </insert>
 </mapper>

@@ -1,10 +1,13 @@
 package com.soso.domain.service;
 
+import com.soso.common.aop.exception.CustomException;
+import com.soso.common.aop.exception.ExceptionStatus;
 import com.soso.common.utils.JWT.JwtUtils;
 import com.soso.domain.dto.TeamDTO;
 import com.soso.domain.dto.TeamMemberDTO;
 import com.soso.domain.repository.itf.TeamRAO;
 import com.soso.domain.service.itf.TeamService;
+import com.soso.login.dto.MemberDTO;
 import com.soso.login.repository.itf.LoginRAO;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.Cookie;
@@ -78,6 +81,20 @@ public class TeamServiceImpl implements TeamService {
         int teamId = Integer.parseInt(claims.get("teamId").toString());
         List<TeamMemberDTO> a = rao.findTeamMembersByLoginMember(teamId);
         return a;
+    }
+
+    @Override
+    public String addMemberByEmail(String sosoJwtToken, HashMap<String, String> reqData) {
+        Claims claims = JwtUtils.getJwtTokenClaims(sosoJwtToken);
+        String teamId = claims.get("teamId").toString();
+
+        MemberDTO memberDTO = loginRAO.findMemberByEmail(reqData.get("email"));
+        if(memberDTO == null){
+            throw new CustomException(ExceptionStatus.NOT_FOUND_EMAIL_BY_MEMBER);
+        }
+        System.out.println("memberDTO = " + memberDTO);
+        rao.addMemberByEmail(teamId, String.valueOf(memberDTO.getId()));
+        return null;
     }
 
 }
