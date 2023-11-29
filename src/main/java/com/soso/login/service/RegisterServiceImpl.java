@@ -82,7 +82,7 @@ public class RegisterServiceImpl implements RegisterService {
         System.out.println("certifiedCode = " + certifiedCode);
 
         // 무작위 코드를 이메일로 전송
-//        sendMail(reqData.get("email"), certifiedCode);
+        sendMail(reqData.get("email"), certifiedCode);
 
         // 무작위 코드를 repository에 저장
         CertifiedCodeRepository.repository.add(
