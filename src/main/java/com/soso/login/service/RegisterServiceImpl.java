@@ -100,7 +100,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public synchronized String registerMember(RegisterMemberDTO registerMemberDTO) throws Exception {
+    public String registerMember(RegisterMemberDTO registerMemberDTO) throws Exception {
         // 아이디 중복체크
         if(duplicatedCheckLoginId(registerMemberDTO.getLoginId())){
             throw new CustomException(ExceptionStatus.LOGIN_ID_DUPLICATED);
