@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Repository
 @Mapper
 public interface FileRAO {
-    public int uploadFile(MultipartFile file);
-    FileDTO selectFileByUuid(String uuid);
+
+    public int uploadFile(FileDTO fileDTO);
+
+    public FileDTO findFileByUuid(String uuid);
 }

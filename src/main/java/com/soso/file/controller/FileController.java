@@ -3,6 +3,7 @@ package com.soso.file.controller;
 import com.soso.common.aop.jwt.JwtValidationAOP;
 import com.soso.file.service.itf.FileService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,8 @@ public class FileController {
         return new ResponseEntity<>(fileService.uploadFile(file), HttpStatus.OK);
     }
 
-//    @GetMapping("/download")
-//    public ResponseEntity<?> downloadFile(@RequestParam("file") MultipartFile file) {
-//        return new ResponseEntity<>(fileService.downloadFile(), HttpStatus.OK);
-//    }
+    @GetMapping("/download/{uuid}")
+    public ResponseEntity<?> downloadFile(@PathVariable("uuid") String uuid, HttpServletResponse res) throws IOException {
+        return new ResponseEntity<>(fileService.downloadFile(uuid, res), HttpStatus.OK);
+    }
 }

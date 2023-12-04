@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soso.file.repository.itf.FileRAO">
+
+    <insert id="uploadFile" parameterType="FileDTO">
+        INSERT INTO file( uuid, fileName, filePath, tempFile, delYn, regDate)
+        VALUES ( #{uuid}, #{fileName}, #{filePath}, true, false, CURRENT_TIMESTAMP)
+    </insert>
+
+    <select id="findFileByUuid" parameterType="java.lang.String" resultType="FileDTO">
+        SELECT *
+        FROM file
+        WHERE uuid = #{uuid}
+    </select>
+
+</mapper>

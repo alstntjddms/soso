@@ -26,6 +26,7 @@ public enum ExceptionStatus {
     EMPTY_FILE("파일이 비어 있음"),
     OVER_100MB_FILE("100MB가 넘는 파일"),
     EMPTY_FILE_NAME("100MB가 넘는 파일"),
+    FILE_NOT_FOUND("파일을 못 찾음"),
     ;
 
     private final String message;
