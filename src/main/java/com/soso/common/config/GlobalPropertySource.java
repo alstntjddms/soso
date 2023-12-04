@@ -45,4 +45,17 @@ public class GlobalPropertySource {
     @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
     private String mailEnable;
 
+    // 파일저장 관련 설정
+//    @Value("${spring.servlet.multipart.enabled}")
+//    private String multipartEnabled;
+//
+//    @Value("${spring.servlet.multipart.file-size-threshold}")
+//    private String multipartFileSizeThreshold;
+//
+//    @Value("${spring.servlet.multipart.max-file-size}")
+//    private String multipartMaxFileSize;
+//
+//    @Value("${spring.servlet.multipart.max-request-size}")
+//    private String multipartMaxRequestSize;
+
 }

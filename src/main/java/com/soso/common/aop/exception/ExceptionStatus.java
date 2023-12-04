@@ -23,6 +23,9 @@ public enum ExceptionStatus {
     NO_INQUIRY_PERMISSION("데이터 조회권한 없음."),
     INVALID_LOGIN("잘못된 로그인"),
     NOT_FOUND_EMAIL_BY_MEMBER("이메일로 멤버를 찾을 수 없음"),
+    EMPTY_FILE("파일이 비어 있음"),
+    OVER_100MB_FILE("100MB가 넘는 파일"),
+    EMPTY_FILE_NAME("100MB가 넘는 파일"),
     ;
 
     private final String message;
