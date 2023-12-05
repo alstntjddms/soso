@@ -6,9 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.sql.Timestamp;
-import java.util.Arrays;
 
 @RestControllerAdvice
 @ControllerAdvice
@@ -24,14 +22,14 @@ public class ExceptionController {
                 ), HttpStatus.BAD_REQUEST);
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ExceptionResponse> exceptionRequest(Exception e){
-//        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getCause().getMessage()
-//                    + " [발생 시간] : " + new Timestamp(System.currentTimeMillis()));
-//        return new ResponseEntity<ExceptionResponse>(
-//                new ExceptionResponse(
-//                        "알수 없는 에러", e.getMessage(), new Timestamp(System.currentTimeMillis())
-//                ), HttpStatus.BAD_REQUEST);
-//    }
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ExceptionResponse> exceptionRequest(RuntimeException e){
+        log.warn("[예외명] : " + "알수 없는 에러 " + "[메시지] : " + e.getCause().getMessage()
+                    + " [발생 시간] : " + new Timestamp(System.currentTimeMillis()));
+        return new ResponseEntity<ExceptionResponse>(
+                new ExceptionResponse(
+                        "알수 없는 에러", e.getMessage(), new Timestamp(System.currentTimeMillis())
+                ), HttpStatus.BAD_REQUEST);
+    }
 
 }

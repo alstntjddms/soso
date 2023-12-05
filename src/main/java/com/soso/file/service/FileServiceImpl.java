@@ -22,6 +22,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -35,7 +36,7 @@ public class FileServiceImpl implements FileService {
     FileRAO rao;
 
     @Override
-    public int uploadFile(MultipartFile file) throws IOException {
+    public HashMap<String, String> uploadFile(MultipartFile file) throws IOException {
 
         if(file == null || file.isEmpty()){
             throw new CustomException(ExceptionStatus.EMPTY_FILE);
@@ -71,8 +72,9 @@ public class FileServiceImpl implements FileService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return 0;
+        HashMap<String, String> result = new HashMap<>();
+        result.put("url", "http://localhost/api/file/download/"+uuid);
+        return result;
     }
 
     @Override
